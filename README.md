@@ -138,7 +138,7 @@ join_poll <pollId> → subscribe to updates
 poll_update → receive live results after each vote
 
 ### Example flow
-``
+***
 POST /users → create user
 
 POST /polls → create poll with options
@@ -148,4 +148,4 @@ Client joins via WebSocket: socket.emit("join_poll", pollId)
 POST /votes/:pollId → cast vote
 
 poll_update broadcast with updated results 🎉
-``
+***
