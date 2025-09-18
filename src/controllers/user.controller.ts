@@ -6,7 +6,7 @@ export const createUser = async (req: Request, res: Response) => {
     const { name, email, password } = req.body;
     if (!name || !email || !password) return res.status(400).json({ error: "Missing fields" });
 
-    const existing = await UserService.getUserById(1); // just a test usage
+    const existing = await UserService.getUserById(1);  // TODO: check if email already exists
     const user = await UserService.createUser(name, email, password);
 
     const { passwordHash, ...safeUser } = user as any;

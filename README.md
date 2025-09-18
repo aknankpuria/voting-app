@@ -113,3 +113,39 @@ POST /votes/:pollId
   "optionId": 2
 }
 ```
+
+### WebSocket (Real-time)
+Connect with Socket.IO client:
+
+```
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>
+  const socket = io("http://localhost:4000");
+
+  // Join poll room
+  socket.emit("join_poll", 1);
+
+  // Listen for live updates
+  socket.on("poll_update", (data) => {
+    console.log("Updated results:", data);
+  });
+</script>
+```
+Events:
+
+join_poll <pollId> → subscribe to updates
+
+poll_update → receive live results after each vote
+
+### Example flow
+``
+POST /users → create user
+
+POST /polls → create poll with options
+
+Client joins via WebSocket: socket.emit("join_poll", pollId)
+
+POST /votes/:pollId → cast vote
+
+poll_update broadcast with updated results 🎉
+``
