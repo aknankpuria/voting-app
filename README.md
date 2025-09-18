@@ -70,6 +70,13 @@ bun --watch src/server.ts
 ```
 Server available at: http://localhost:4000
 
+### 6. Run Tests
+
+```
+bun run test
+
+```
+
 ## 📌 API Endpoints
 
 ### 👤 Users

@@ -1,16 +1,29 @@
-version: "3.8"
 services:
   db:
-    image: postgres:latest
-    restart: unless-stopped
+    image: postgres:15
+    container_name: realtime-polling-db
+    restart: always
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: vote_app
-    ports:
-      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: realtime-polling-pgadmin
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - db
 
 volumes:
-  pgdata:
+  postgres_data:
+    driver: local
