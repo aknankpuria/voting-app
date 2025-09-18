@@ -70,17 +70,43 @@ Server available at: http://localhost:4000
 ## 📌 API Endpoints
 
 ### 👤 Users
-#### Create User
+Create User
 POST /users
 
-```{
+```
+{
   "name": "Alice",
   "email": "alice@example.com",
   "password": "secret"
-}```
+}
+```
 
 
 Get User
 GET /users/1
 
 ### 📊 Polls
+
+Create Poll
+POST /polls
+
+{
+  "question": "Which color?",
+  "options": ["Red", "Green", "Blue"],
+  "creatorId": 1,
+  "isPublished": true
+}
+
+
+Get Poll
+GET /polls/1
+
+### 🗳️ Votes
+
+Cast Vote
+POST /votes/:pollId
+
+{
+  "userId": 1,
+  "optionId": 2
+}
