@@ -1,16 +1,86 @@
 # voting-app
 
-To install dependencies:
+# 🗳️ Real-Time Polling API
 
+A backend challenge implementation using **Bun + TypeScript + Express + Prisma + PostgreSQL + Socket.IO**.  
+Provides REST APIs and real-time updates for live polling.
+
+---
+
+## 🚀 Tech Stack
+- **Runtime:** [Bun](https://bun.sh) + TypeScript  
+- **Framework:** Express.js  
+- **Database:** PostgreSQL  
+- **ORM:** Prisma  
+- **Real-time:** Socket.IO  
+- **Containerized DB:** Docker Compose  
+
+---
+
+## 📂 Project Structure
+ voting app/
+ ├── prisma/
+│ └── schema.prisma # Prisma DB schema
+├── src/
+│ ├── config/ # Configs (Prisma client)
+│ ├── controllers/ # Express controllers
+│ ├── routes/ # Route definitions
+│ ├── services/ # Business logic
+│ ├── sockets/ # WebSocket handlers
+│ ├── app.ts # Express setup
+│ └── server.ts # Entry point (Express + Socket.IO)
+├── docker-compose.yml # PostgreSQL container
+├── tsconfig.json # TypeScript config
+├── package.json # Bun dependencies
+└── README.md
+
+## ⚙️ Setup Instructions
+
+### 1. Clone & Install
 ```bash
-bun install
+git clone https://github.com/aknankpuria/voting-app.git
+cd realtime-polling
+bun install 
 ```
+### 2. Run PostgreSQL (Docker)
 
-To run:
-
-```bash
-bun run index.ts
 ```
+docker-compose up -d
 
-This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-# voting-app
+ ```
+
+DB runs on: postgres://postgres:postgres@localhost:5432/realtime_polling
+
+### 3. Environmental Valriables
+```
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/realtime_polling"
+PORT=4000
+```
+### 4. Database Migration 
+```
+bunx prisma migrate dev --name init
+bunx prisma generate
+```
+### 5. Run Server 
+```
+bun --watch src/server.ts
+```
+Server available at: http://localhost:4000
+
+## 📌 API Endpoints
+
+### 👤 Users
+#### Create User
+POST /users
+
+```{
+  "name": "Alice",
+  "email": "alice@example.com",
+  "password": "secret"
+}```
+
+
+Get User
+GET /users/1
+
+### 📊 Polls
