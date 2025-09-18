@@ -18,7 +18,8 @@ Provides REST APIs and real-time updates for live polling.
 ---
 
 ## 📂 Project Structure
-`` voting app/
+***
+ voting app/
  ├── prisma/
 │ └── schema.prisma # Prisma DB schema
 ├── src/
@@ -34,7 +35,7 @@ Provides REST APIs and real-time updates for live polling.
 ├── package.json # Bun dependencies
 └── README.md
 
-``
+***
 
 ## ⚙️ Setup Instructions
 
