@@ -18,7 +18,7 @@ Provides REST APIs and real-time updates for live polling.
 ---
 
 ## 📂 Project Structure
- voting app/
+`` voting app/
  ├── prisma/
 │ └── schema.prisma # Prisma DB schema
 ├── src/
@@ -33,6 +33,8 @@ Provides REST APIs and real-time updates for live polling.
 ├── tsconfig.json # TypeScript config
 ├── package.json # Bun dependencies
 └── README.md
+
+``
 
 ## ⚙️ Setup Instructions
 
@@ -89,14 +91,14 @@ GET /users/1
 
 Create Poll
 POST /polls
-
+```
 {
   "question": "Which color?",
   "options": ["Red", "Green", "Blue"],
   "creatorId": 1,
   "isPublished": true
 }
-
+```
 
 Get Poll
 GET /polls/1
@@ -105,8 +107,9 @@ GET /polls/1
 
 Cast Vote
 POST /votes/:pollId
-
+```
 {
   "userId": 1,
   "optionId": 2
 }
+```
